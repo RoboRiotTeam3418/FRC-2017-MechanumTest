@@ -1,0 +1,36 @@
+    com.team3418.frc2016
+
+    	Contains the robot's central functions and holds a file with all numerical constants used throughout the code.
+    	For example, the Robot member class controls all routines depending on the robot state.
+
+    com.team3418.frc2016.auto
+
+    	Controls the robot's autonomous routine for the autonomous state. See the auto.modes package for the autonomous routines.
+
+    com.team3418.frc2016.auto.actions
+    
+    	Contains all actions used during the autonomous period, which all share a common interface, Action (also in this package).
+   		Examples include getting the hood low. Routines interact with the Subsystems, which interact with the hardware.
+
+    com.team3418.frc2016.auto.modes
+
+    	Contains all autonomous routines. Autonomous routines typically move the robot in their class and call one or more Actions.
+
+    com.team3418.frc2016.subsystems
+
+    	Subsystems are consolidated into one central class per subsystem, all of which implement the Subsystem abstract class.
+    	Each Subsystem uses enums, whether at the local or global scope, to set one of multiple states. For example, the HoodRoller has "Stop", "Intake", "Reverse", and "Shoot" states.
+    	There is only one instance of each Subsystem class (one cannot have two Drivebases on one robot or in the code).
+    	To modify a subsystem, one would get the instance of the subsystem and change its desired state.
+    	The Subsystem class will work on setting the desired state.
+
+    com.team3418.lib.util
+
+    	A collection of assorted utilities used in the robot code. This includes custom classes for hardware devices (encoders, gyroscopes, etc.) as well as mathematical helper functions, 
+    	especially regarding translations and rotations. Check each .java file for more information.
+
+Variable Naming Conventions
+
+    k_*** (i.e. kMinHoodAngle) : Final constants, especialy those found in the Constants.java file
+    K_*** (i.e. K_VISION_MODE) : Static constants
+    m*** (i.e. mStartingDistance): Private instance variables
