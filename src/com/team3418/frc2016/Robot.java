@@ -2,6 +2,8 @@ package com.team3418.frc2016;
 
 // import classes used in main robot program
 import com.team3418.frc2016.Constants;
+import com.team3418.frc2016.ControlBoard.DriverControlMode;
+
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.RobotDrive.MotorType;
 
@@ -70,6 +72,17 @@ public class Robot extends IterativeRobot {
     	//set states of subsystems depending on operator controls or the state of other subsystems
     	
     	mNow = Timer.getFPGATimestamp();
+    	
+    	
+    	if (mControls.getDriverControlModeSwitchButton()){
+    		if (mControls.getDriverControlMode() == DriverControlMode.LEFT_STICK_STRAFE_MODE){
+    			mControls.rightStickStrafeMode();
+    		} else if (mControls.getDriverControlMode() == DriverControlMode.RIGHT_STICK_STRAFE_MODE){
+    			mControls.leftStickStrafeMode();
+    		}
+    	}
+    	
+    	
     	
     	
     	    	

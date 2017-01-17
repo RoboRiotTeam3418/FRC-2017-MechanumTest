@@ -14,6 +14,26 @@ public class ControlBoard {
         return mInstance;
     }
     
+    public enum DriverControlMode{
+    	LEFT_STICK_STRAFE_MODE,
+    	RIGHT_STICK_STRAFE_MODE
+    }
+    
+    private DriverControlMode mDriverControlMode;
+    
+    
+    public DriverControlMode getDriverControlMode(){
+    	return mDriverControlMode;
+    }
+    
+    public void leftStickStrafeMode(){
+    	mDriverControlMode = DriverControlMode.LEFT_STICK_STRAFE_MODE;
+    }
+    
+    public void rightStickStrafeMode(){
+    	mDriverControlMode = DriverControlMode.RIGHT_STICK_STRAFE_MODE;
+    }
+    
     //create joystick object
     private final Joystick mDriverStick;
     
@@ -66,7 +86,16 @@ public class ControlBoard {
     
     // DRIVER CONTROLS (mDriverStick)
     public double getXThrottle() {
-    	double X = mDriverStick.getRawAxis(4);
+    	
+    	double X = 0;
+    	switch (mDriverControlMode){
+    	case LEFT_STICK_STRAFE_MODE:
+        	X = mDriverStick.getRawAxis(4);
+        	break;
+    	case RIGHT_STICK_STRAFE_MODE:
+    		X = mDriverStick.getRawAxis(5);
+    	}
+    	
     	if (X > mStickDeadzone || X < -mStickDeadzone) {
         	return X;
     	}
@@ -74,7 +103,16 @@ public class ControlBoard {
     }
     
     public double getYThrottle() {
-    	double Y = mDriverStick.getRawAxis(5);
+    	
+    	double Y = 0;
+    	switch (mDriverControlMode){
+    	case LEFT_STICK_STRAFE_MODE:
+        	Y = mDriverStick.getRawAxis(5);
+        	break;
+    	case RIGHT_STICK_STRAFE_MODE:
+    		Y = mDriverStick.getRawAxis(4);
+    	}
+    	
     	if (Y > mStickDeadzone || Y < -mStickDeadzone) {
         	return Y;
     	}
@@ -87,6 +125,10 @@ public class ControlBoard {
         	return rot;
     	}
     	else return 0;
+    }
+    
+    public boolean getDriverControlModeSwitchButton(){
+    	return mDriverStick.getRawButton(1);
     }
     
     
