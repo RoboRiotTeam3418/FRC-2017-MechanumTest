@@ -90,10 +90,10 @@ public class ControlBoard {
     	double X = 0;
     	switch (mDriverControlMode){
     	case LEFT_STICK_STRAFE_MODE:
-        	X = mDriverStick.getRawAxis(4);
+        	X = mDriverStick.getRawAxis();
         	break;
     	case RIGHT_STICK_STRAFE_MODE:
-    		X = mDriverStick.getRawAxis(5);
+    		X = mDriverStick.getRawAxis();
     	}
     	
     	if (X > mStickDeadzone || X < -mStickDeadzone) {
@@ -107,10 +107,10 @@ public class ControlBoard {
     	double Y = 0;
     	switch (mDriverControlMode){
     	case LEFT_STICK_STRAFE_MODE:
-        	Y = mDriverStick.getRawAxis(5);
+        	Y = mDriverStick.getRawAxis();
         	break;
     	case RIGHT_STICK_STRAFE_MODE:
-    		Y = mDriverStick.getRawAxis(4);
+    		Y = mDriverStick.getRawAxis();
     	}
     	
     	if (Y > mStickDeadzone || Y < -mStickDeadzone) {
@@ -120,7 +120,18 @@ public class ControlBoard {
     }
     
     public double getRotation() {
-    	double rot = mDriverStick.getRawAxis(0);
+    	
+    	double rot = 0;
+    	switch (mDriverControlMode){
+    	case LEFT_STICK_STRAFE_MODE:
+        	rot = mDriverStick.getRawAxis();
+        	break;
+    	case RIGHT_STICK_STRAFE_MODE:
+    		rot = mDriverStick.getRawAxis();
+    	}
+    	
+    	
+    	
     	if (rot > mStickDeadzone || rot < -mStickDeadzone) {
         	return rot;
     	}
