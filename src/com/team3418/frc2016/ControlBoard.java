@@ -130,8 +130,6 @@ public class ControlBoard {
     		rot = mDriverStick.getRawAxis();
     	}
     	
-    	
-    	
     	if (rot > mStickDeadzone || rot < -mStickDeadzone) {
         	return rot;
     	}
