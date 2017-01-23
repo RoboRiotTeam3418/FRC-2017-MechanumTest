@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.RobotDrive.MotorType;
  */
 public class Robot extends IterativeRobot {
     // Subsystems
+	Compressor mCompressor = new Compressor();
 	
     // Other parts of the robot
     ControlBoard mControls = ControlBoard.getInstance();
@@ -38,7 +39,7 @@ public class Robot extends IterativeRobot {
     	//set initial wanted states for all subsystems
     	mDrive.setInvertedMotor(MotorType.kFrontLeft, true);
     	mDrive.setInvertedMotor(MotorType.kRearLeft, true);
-
+    	
     	stopAllSubsystems();
     	updateAllSubsystems();
     }
